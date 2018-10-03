@@ -63,7 +63,7 @@ describe('El modelo `Article`', function () {
 
     });
 
-    xit('requiere `content`', function () {
+    it('requiere `content`', function () {
 
       article.content = null;
 
@@ -77,7 +77,7 @@ describe('El modelo `Article`', function () {
 
     });
 
-    xit('requiere `title` (en una forma más estricta que para `content)', function () {
+    it('requiere `title` (en una forma más estricta que para `content)', function () {
 
       article.title = '';
 
@@ -92,7 +92,7 @@ describe('El modelo `Article`', function () {
 
     });
 
-    xit('puede manejar `content` extenso', function() {
+    it('puede manejar `content` extenso', function() {
 
       var articleContent = 'WALL-E (stylized with an interpunct as WALL·E) is a 2008 American computer-animated science-fiction comedy film produced by Pixar Animation Studios and released by Walt Disney Pictures. Directed by Andrew Stanton, the story follows a robot named WALL-E, who is designed to clean up an abandoned, waste-covered Earth far in the future. He falls in love with another robot named EVE, who also has a programmed task, and follows her into outer space on an adventure that changes the destiny of both his kind and humanity. Both robots exhibit an appearance of free will and emotions similar to humans, which develop further as the film progresses.';
 
@@ -130,7 +130,7 @@ describe('El modelo `Article`', function () {
        *
        * http://docs.sequelizejs.com/manual/tutorial/models-definition.html#defining-as-part-of-the-model-options
        */
-      xit('Evalua a los primeros 23 caracteres del `content` anexado con "..."', function () {
+      it('Evalua a los primeros 23 caracteres del `content` anexado con "..."', function () {
 
         expect(article.snippet).to.equal('The South African cliff...');
 
@@ -143,7 +143,7 @@ describe('El modelo `Article`', function () {
       });
 
       // Esto es principalmente para evitar un caso limite visto durante `Model.update`
-      xit('retorna un empty string para contenido faltante', function(){
+      it('retorna un empty string para contenido faltante', function(){
 
         article.content = undefined;
 
@@ -165,7 +165,7 @@ describe('El modelo `Article`', function () {
        *
        * http://docs.sequelizejs.com/manual/tutorial/models-definition.html#expansion-of-models
        */
-      xit('trunca el `content`', function () {
+      it('trunca el `content`', function () {
 
         expect(article.content).to.equal(fullText);
 
@@ -174,7 +174,7 @@ describe('El modelo `Article`', function () {
 
       });
 
-      xit('acepta cualquier length', function () {
+      it('acepta cualquier length', function () {
 
         expect(article.content).to.equal(fullText);
 
@@ -184,7 +184,7 @@ describe('El modelo `Article`', function () {
 
       });
 
-      xit('No guarda la instancia una vez truncada', function() {
+      it('No guarda la instancia una vez truncada', function() {
 
         expect(article.content).to.equal(fullText);
 
@@ -220,7 +220,7 @@ describe('El modelo `Article`', function () {
         return Promise.all(articles);
       });
 
-      xit('Encuentra un artículo especifico por su `title`', function () {
+      it('Encuentra un artículo especifico por su `title`', function () {
 
         return Article.findByTitle('Migratory Birds')
         .then(function (foundArticle) {
@@ -244,7 +244,7 @@ describe('El modelo `Article`', function () {
      * http://docs.sequelizejs.com/manual/tutorial/associations.html#belongsto
      */
 
-    xit("pertenece a un user, que es guardado como el `author` del articulo", function() {
+    it("pertenece a un user, que es guardado como el `author` del articulo", function() {
 
       var creatingUser = User.create({ name: 'Alatar the Blue'});
       var creatingArticle = Article.create({

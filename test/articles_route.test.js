@@ -47,7 +47,7 @@ describe('Articles Route:', function () {
      *
      * **Credito Extra**: Considera usando app.param para automaticamente agregar el Article donde haya un param :id detectado
      */
-    xit('responde con un array via JSON', function () {
+    it('responde con un array via JSON', function () {
 
       return agent
       .get('/articles')
@@ -67,7 +67,7 @@ describe('Articles Route:', function () {
      * luego retornalo usando la ruta GET /articles
      *
      */
-    xit('retorna un articulo si hay uno en la base de datos', function () {
+    it('retorna un articulo si hay uno en la base de datos', function () {
 
       var article = Article.build({
         title: 'Test Article',
@@ -94,7 +94,7 @@ describe('Articles Route:', function () {
      * modelo, luego retornalo usando la ruta GET /articles
      *
      */
-    xit('retorna otro articulo si hay uno en la base de datos', function () {
+    it('retorna otro articulo si hay uno en la base de datos', function () {
 
       var article1 = Article.build({
         title: 'Test Article',
@@ -157,7 +157,7 @@ describe('Articles Route:', function () {
      * Este es un correcto pedido a GET /articles/:id donde buscamos
      * por el id del articulo creado arriba.
      */
-    xit('retorna el JSON del articulo basado en el id', function () {
+    it('retorna el JSON del articulo basado en el id', function () {
 
       return agent
       .get('/articles/' + coolArticle.id)
@@ -174,7 +174,7 @@ describe('Articles Route:', function () {
     /**
      * Aquí pasamos un id incorrecto al URL, deberíamos tener un error 404
      */
-    xit('retorna un error 404 si el id no es correcto', function () {
+    it('retorna un error 404 si el id no es correcto', function () {
 
       return agent
       .get('/articles/76142896')
@@ -200,7 +200,7 @@ describe('Articles Route:', function () {
      *  }
      *
      */
-    xit('creates a new article', function () {
+    it('creates a new article', function () {
 
       return agent
       .post('/articles')
@@ -219,7 +219,7 @@ describe('Articles Route:', function () {
 
     // Esta debería fallar con un 500 porque no seteamos el article.content
 
-    xit('no crea un nuevo articulo sin contenido', function () {
+    it('no crea un nuevo articulo sin contenido', function () {
 
       return agent
       .post('/articles')
@@ -231,7 +231,7 @@ describe('Articles Route:', function () {
     });
 
     // Chequeá si los articulos fueron realmente guardados a la base de datos
-    xit('guarda los articulos a la BD', function () {
+    it('guarda los articulos a la BD', function () {
 
       return agent
       .post('/articles')
@@ -254,7 +254,7 @@ describe('Articles Route:', function () {
 
     // No asumas que las operaciones async (como escrituras en la BD)
     // va a funcionar. Siempre chequeá
-    xit('Envía devuelta JSON del articulo creado, no solo la data POSTeada', function () {
+    it('Envía devuelta JSON del articulo creado, no solo la data POSTeada', function () {
 
       return agent
       .post('/articles')
@@ -303,8 +303,7 @@ describe('Articles Route:', function () {
      *  }
      *
      **/
-    xit('actualiza un article', function () {
-
+    it('actualiza un article', function () {
       return agent
       .put('/articles/' + article.id)
       .send({
@@ -320,7 +319,7 @@ describe('Articles Route:', function () {
 
     });
 
-    xit('guarda la actualización a la BD', function () {
+    it('guarda la actualización a la BD', function () {
 
       return agent
       .put('/articles/' + article.id)
@@ -337,7 +336,7 @@ describe('Articles Route:', function () {
 
     });
 
-    xit('Obtiene un 500 por un update invalido', function () {
+    it('Obtiene un 500 por un update invalido', function () {
 
       return agent
       .put('/articles/' + article.id)
